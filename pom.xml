@@ -20,8 +20,7 @@
         <mockito.version>2.23.4</mockito.version>
         <wiremock.version>2.26.3</wiremock.version>
         <lombok.version>1.18.12</lombok.version>
-        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
-        <jacoco.version>0.8.5</jacoco.version>
+        <jacoco.version>0.8.7</jacoco.version>
         <jib.version>2.1.0</jib.version>
         <skip.unit.test>false</skip.unit.test>
         <skip.integration.test>false</skip.integration.test>
@@ -108,10 +107,11 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>2.19.1</version>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -158,20 +158,15 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven-failsafe-plugin.version}</version>
+                <version>3.0.0-M5</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
-                        <configuration>
-                            <skipTests>${skip.integration.test}</skipTests>
-                            <includes>
-                                <include>*/integration/**</include>
-                            </includes>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
