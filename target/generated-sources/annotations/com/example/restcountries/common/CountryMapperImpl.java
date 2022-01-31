@@ -1,8 +1,7 @@
 package com.example.restcountries.common;
 
 import com.example.restcountries.entity.Country;
-import com.example.restcountries.entity.SimpleCountry;
-import com.example.restcountries.entity.SimpleCountry.SimpleCountryBuilder;
+
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
