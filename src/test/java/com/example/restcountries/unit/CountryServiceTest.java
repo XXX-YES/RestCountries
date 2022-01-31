@@ -1,6 +1,6 @@
 package com.example.restcountries.unit;
 
-import com.example.restcountries.entity.SimpleCountry;
+import com.example.restcountries.entity.Country;
 import com.example.restcountries.repository.CountryRepository;
 import com.example.restcountries.service.CountryServiceImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -29,15 +29,13 @@ public class CountryServiceTest {
     @Test
     public void shouldReturnCountryList() {
         final String countrySearchName = "Finland";
-        Flux<SimpleCountry> countryFlux = Flux.just(buildCountry("Finland","Helsinki",
-                "Europe","Northern Europe",5530719L,"FI",338424.0));
+        Flux<Country> countryFlux = Flux.just(buildCountry(true));
         Mockito.when(countryRepository.getCountries(countrySearchName)).thenReturn(countryFlux);
 
-        Flux<SimpleCountry> result = countryService.getCountries(countrySearchName);
+        Flux<Country> result = countryService.getCountries(countrySearchName);
 
         StepVerifier.create(result)
-                .expectNext(buildCountry("Finland","Helsinki",
-                        "Europe","Northern Europe",5530719L,"FI",338424.0))
+                .expectNext(buildCountry(true))
                 .verifyComplete();
 
     }

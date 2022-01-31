@@ -1,14 +1,12 @@
 package com.example.restcountries.unit;
 
 import com.example.restcountries.common.MockServerBaseTest;
-import com.example.restcountries.entity.SimpleCountry;
+import com.example.restcountries.entity.Country;
 import com.example.restcountries.repository.CountryRepository;
 import com.example.restcountries.repository.CountriesRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
@@ -31,15 +29,14 @@ public class CountryRepositoryTest extends MockServerBaseTest {
         super.stubPositiveResponse(countrySearchText);
 
         //when
-        Flux<SimpleCountry> countries = countryRepository.getCountries(countrySearchText);
-        List<SimpleCountry> list1 = countries.collectList().block();
+        Flux<Country> countries = countryRepository.getCountries(countrySearchText);
+        List<Country> list1 = countries.collectList().block();
 
         System.out.println(list1.get(0).toString());
 
         //then
         StepVerifier.create(countries)
-                .expectNext(buildCountry("Finland","Helsinki",
-                        "Europe","Northern Europe",5530719L,"FI",338424.0))
+                .expectNext(buildCountry(true))
                 .verifyComplete();
     }
 
@@ -50,12 +47,11 @@ public class CountryRepositoryTest extends MockServerBaseTest {
         super.stubNotFoundResponse(invalidCountrySearchText);
 
         //when
-        Flux<SimpleCountry> countries = countryRepository.getCountries(invalidCountrySearchText);
+        Flux<Country> countries = countryRepository.getCountries(invalidCountrySearchText);
 
 
         StepVerifier.create(countries)
-                .expectNext(buildCountry(null,null,
-                        null,null,null,null,null))
+                .expectNext(buildCountry(false))
                 .verifyComplete();
 
 

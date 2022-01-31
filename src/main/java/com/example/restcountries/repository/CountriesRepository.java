@@ -1,8 +1,6 @@
 package com.example.restcountries.repository;
 
 import com.example.restcountries.entity.Country;
-import com.example.restcountries.entity.SimpleCountry;
-import com.example.restcountries.common.CountryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -19,7 +17,7 @@ public class CountriesRepository implements CountryRepository {
     }
 
     @Override
-    public Flux<SimpleCountry> getCountries(String name) {
+    public Flux<Country> getCountries(String name) {
         String url = "/all";
         if (!name.equals("all")){
             url = String.format("/name/%s?fullText=true",name);
@@ -27,8 +25,7 @@ public class CountriesRepository implements CountryRepository {
         return webClient.get()
                 .uri(url, name)
                 .retrieve()
-                .bodyToFlux(Country.class)
-                .map(CountryMapper.INSTANCE::toDomainCountry);
+                .bodyToFlux(Country.class);
 
     }
 }

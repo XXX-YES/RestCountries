@@ -1,6 +1,6 @@
 package com.example.restcountries.service;
 
-import com.example.restcountries.entity.SimpleCountry;
+import com.example.restcountries.entity.Country;
 import com.example.restcountries.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Flux<SimpleCountry> getCountries(String name) {
+    public Flux<Country> getCountries(String name) {
         return countryRepository.getCountries(name);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.restcountries.integration;
 
 
-import com.example.restcountries.entity.SimpleCountry;
+import com.example.restcountries.entity.Country;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,20 +21,20 @@ public class CountryControllerIT extends BaseIntegrationTest {
     private WebTestClient webTestClient;
 
     @Test
-    public void shouldReturnOkResponseWithBody() {
+    public void shouldReturnCountryWithAttributes() {
         //given
         final String countrySearchText = "Finland";
         super.stubPositiveResponse(countrySearchText);
 
         //when
         webTestClient.get()
-                .uri(String.format("/countries/%s", countrySearchText))
+                .uri(String.format("/name/%s", countrySearchText))
                 .exchange()
                 .expectStatus().isOk() //then
-                .expectBodyList(SimpleCountry.class)
+                .expectBodyList(Country.class)
                 .value(countries -> hasSize(1))
-                .value(countries -> countries.get(0), equalTo(buildCountry("Finland","Helsinki",
-                        "Europe","Northern Europe",5530719L,"FI",338424.0)));
+                .value(countries -> countries.get(0), equalTo(buildCountry(true)));
+
     }
 
     @Test
@@ -45,12 +45,11 @@ public class CountryControllerIT extends BaseIntegrationTest {
 
         //when
         webTestClient.get()
-                .uri(String.format("/countries/%s", invalidCountrySearchText))
+                .uri(String.format("/name/%s", invalidCountrySearchText))
                 .exchange()
                 .expectStatus().isOk() //then
-                .expectBodyList(SimpleCountry.class)
+                .expectBodyList(Country.class)
                 .value(countries -> hasSize(1))
-                .value(countries -> countries.get(0), equalTo(buildCountry(null,null,
-                        null,null,null,null,null)));
+                .value(countries -> countries.get(0), equalTo(buildCountry(false)));
     }
 }

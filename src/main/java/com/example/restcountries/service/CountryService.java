@@ -1,9 +1,9 @@
 package com.example.restcountries.service;
 
-import com.example.restcountries.entity.SimpleCountry;
+import com.example.restcountries.entity.Country;
 import reactor.core.publisher.Flux;
 
 public interface CountryService {
 
-    Flux<SimpleCountry> getCountries(String name);
+    Flux<Country> getCountries(String name);
 }
