@@ -5,7 +5,7 @@ The web service would return a country/region given a search country name. Note 
 * Search a country/region via a name
 
 ```
-http://localhost:8080/name/{name}
+http://localhost:8080/countries/{name}
 ```
 
 * List all  countries/regions 
@@ -23,5 +23,3 @@ http://localhost:8080/countries
 ```
 ./mvnw spring-boot:run
 ```
-### Simple web application
-##### There is a simple web application under the /src/main/resources/webApplication for showing relevant country information in the browser.
