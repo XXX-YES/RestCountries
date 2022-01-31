@@ -23,3 +23,6 @@ http://localhost:8080/countries
 ```
 ./mvnw spring-boot:run
 ```
+
+### Web Application
+Under the A file, there is a separate wep application for showing relevant country information in the browser.
