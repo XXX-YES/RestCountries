@@ -32,9 +32,7 @@ const displayCountry = (data) => {
         info+="<td class='pr-5'>"+country.alpha2Code+"</td>";
         info+="<td class='pr-5'>"+country.population+"</td>";
         info+="<td>"+country.area+"</td>";
-		
 	info+="<td><ol>";
-		
 	for(i in country.borders){
 		info += "<li>" + country.borders[i] +  "</li>"	
 	}
