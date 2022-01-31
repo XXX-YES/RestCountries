@@ -23,3 +23,5 @@ http://localhost:8080/countries
 ```
 ./mvnw spring-boot:run
 ```
+### Simple web application
+##### There is a simple web application under the /src/main/resources/webApplication for showing relevant country information in the browser.
