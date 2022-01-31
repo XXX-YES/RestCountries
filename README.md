@@ -25,4 +25,4 @@ http://localhost:8080/countries
 ```
 
 ### Web Application
-Under the A file, there is a separate wep application for showing relevant country information in the browser.
+Under the src/main/resources/webApplication/, there is a separate wep application for showing relevant country information in the browser.
