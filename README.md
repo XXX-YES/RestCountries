@@ -5,7 +5,7 @@ The web service would return a country/region given a search country name. Note 
 * Search a country/region via a name
 
 ```
-http://localhost:8080/countries/{name}
+http://localhost:8080/name/{name}
 ```
 
 * List all  countries/regions 
