@@ -1,6 +1,4 @@
-
 package com.example.restcountries.entity;
-
 import lombok.*;
 
 import java.util.List;
@@ -33,11 +31,11 @@ public class Country {
     private List<String> borders;
     private String nativeName;
     private String numericCode;
-//    private List<Map<?,?>> currencies;
-//    private List<Map<?,?>>  languages;
-//    private List<Map<?,?>> translations;
-//    private Map<String, String> flags;
-//    private List<Map<?,?>>  regionalBlocs ;
+    private List<Map<?,?>> currencies;
+    private List<Map<?,?>>  languages;
+    private Map<String, String> translations;
+    private Map<String, String> flags;
+    private List<Map<?,?>>  regionalBlocs ;
     private String cioc;
-
+    private boolean independent;
 }
